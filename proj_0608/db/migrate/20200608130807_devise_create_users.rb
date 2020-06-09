@@ -3,20 +3,24 @@
 class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
-      ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
 
-      ## Recoverable
-      t.string   :reset_password_token
-      t.datetime :reset_password_sent_at
+      ## Devise gem default setting
+        ## Database authenticatable
+        t.string :email,              null: false, default: ""
+        t.string :encrypted_password, null: false, default: ""
 
-      ## Rememberable
-      t.datetime :remember_created_at
-      t.integer   :age
-      t.boolean   :gender
-      t.string    :name
-      t.references :mentor
+        ## Recoverable
+        t.string   :reset_password_token
+        t.datetime :reset_password_sent_at
+
+        ## Rememberable
+        t.datetime    :remember_created_at
+
+      ## customazing attribute
+      t.integer     :age
+      t.string      :gender
+      t.string      :name
+      t.references  :mentor
 
 
       ## Trackable

@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_131009) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "age"
-    t.boolean "gender"
+    t.string "gender"
     t.string "name"
     t.integer "mentor_id"
     t.datetime "created_at", precision: 6, null: false
