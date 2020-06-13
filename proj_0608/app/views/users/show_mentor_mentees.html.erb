@@ -1,0 +1,19 @@
+<div class="w-75 p-3" style="background-color: #eee;">
+    <h2><%= @mentor.email %>'s 멘티 정보 <span class="badge badge-secondary"></h2>
+    <table class="table">
+        <th>이메일</th>
+        <th>이름</th>
+        <th>가입일</th>
+        <th>독서량</th>
+        <th>멘티 수</th>
+        <tr>
+            <% @users.each do |u| %>
+                <td><%= u.email %></td>
+                <td><%= u.name %></td>
+                <td><%= u.created_at.to_date %></td>
+                <td><%= u.reads.where(status: true).count %></td>
+                <td><%= u.mentees.count %></td>
+            <% end %>
+        </tr>
+    </table>
+</div>

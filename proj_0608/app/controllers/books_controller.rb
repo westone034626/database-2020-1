@@ -39,5 +39,3 @@ class BooksController < ApplicationController
         end
     end
 end
-
-book = Book.new

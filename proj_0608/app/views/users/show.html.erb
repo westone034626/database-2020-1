@@ -1,0 +1,24 @@
+<div class="w-75 p-3" style="background-color: #eee;">
+    <h2>멘토 유저 정보 <span class="badge badge-secondary"></h2>
+    <table class="table">
+        <th>이메일</th>
+        <th>이름</th>
+        <th>가입일</th>
+        <th>독서량</th>
+        <th>멘티 수</th>
+        <th>가장 많이 읽은 장르</th>
+        <tr>
+            <td><%= @m_u.email %></td>
+            <td><%= @m_u.name %></td>
+            <td><%= @m_u.created_at.to_date %></td>
+            <td><a href="/users/show_mentor_books/<%= @m_u.id %>"><%= @m_u.reads.where(status: true).count %></a></td>
+            <td><a href="/users/show_mentor_mentees/<%= @m_u.id %>"><%= @m_u.mentees.count %></a></td>
+            <td>
+            <% unless @favorite_genre.nil? %>
+                <%= @favorite_genre[0] %>(<%= @favorite_genre[1] %>권)
+            <% else %>
+                <%= '-' %>
+            <% end %>
+            </td>
+    </table>
+</div>

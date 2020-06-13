@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 2020_06_08_131009) do
   create_table "reads", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
-    t.boolean "status"
-    t.string "timeRecord"
+    t.boolean "status", default: false
+    t.date "start"
+    t.date "finish"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
