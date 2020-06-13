@@ -6,14 +6,14 @@
         <th>가입일</th>
         <th>독서량</th>
         <th>멘티 수</th>
-        <tr>
-            <% @users.each do |u| %>
+        <% @users.each do |u| %>
+            <tr>
                 <td><%= u.email %></td>
                 <td><%= u.name %></td>
                 <td><%= u.created_at.to_date %></td>
                 <td><%= u.reads.where(status: true).count %></td>
                 <td><%= u.mentees.count %></td>
-            <% end %>
-        </tr>
+            </tr>
+        <% end %>
     </table>
 </div>
