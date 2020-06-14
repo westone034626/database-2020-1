@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'reads#index'
   get '/books/new' => 'books#new'
-  post '/books/create/' => 'books#create'
+  post '/books/search' => 'books#search'
+  post '/books/create' => 'books#create'
   get '/reads/delete/:book_id' => 'reads#delete'
   get '/reads/create/:book_id' => 'reads#create'
   get '/reads/clear/:book_id' => 'reads#clear'

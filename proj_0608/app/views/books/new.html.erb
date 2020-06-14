@@ -1,15 +1,10 @@
 <div class="w-75 p-3" style="background-color: #eee;">
     <h1>책 등록</h1>
-    <form action="/books/create" method = "post">
+    <form action="/books/search" method = "post">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="form-group">
             ISBN:<input type="text" class="form-control" name= "ISBN" require= true><br>
-            page:<input type="number" class="form-control" name = "page"><br>
-            genre:<input type="text" class="form-control" name = "genre"><br>
-            title:<input type="text" class="form-control" name = "title"><br>
-            author:<input type="text" class="form-control" name = "author"><br>
-            publisher:<input type="text" class="form-control" name = "publisher"><br>
-            <button type="submit" class="btn btn-primary">등록</button>
+            <button type="submit" class="btn btn-primary">검색</button>
         </div>
     </form>
 </div>
