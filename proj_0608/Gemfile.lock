@@ -217,6 +217,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  nokogiri
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.1)
   sass-rails (>= 6)
@@ -234,4 +235,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.2
+   2.1.4
