@@ -12,7 +12,7 @@
         <span>
             <h2>책 정보</h2>
             <%book = Book.find_by(ISBN: params[:ISBN])%>
-            IBSN : <%=book.ISBN%><br>
+            IBSN : <%=book.ISBN %><br>
             쪽수 : <%=book.page%><br>
             분야 : <%=book.genre%><br>
             제목 : <%=book.title%><br>

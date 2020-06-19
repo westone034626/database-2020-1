@@ -6,9 +6,7 @@ class BooksController < ApplicationController
 
     def search
         if params[:ISBN].length == 13
-            if book = Book.find_by(ISBN: params[:ISBN])
-
-            else
+            unless book = Book.find_by(ISBN: params[:ISBN])
                 url = "http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=" + params[:ISBN]
                 require 'open-uri'
                 
