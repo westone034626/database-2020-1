@@ -40,10 +40,13 @@ ActiveRecord::Schema.define(version: 2020_06_08_131009) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "age"
     t.string "gender"
     t.string "name"
     t.integer "mentor_id"
+    t.integer "readVol", default: 0
+    t.integer "menteeNum", default: 0
+    t.string "favGenre", default: "-"
+    t.integer "favGenreVol", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

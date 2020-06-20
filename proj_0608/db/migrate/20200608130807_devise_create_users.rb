@@ -17,10 +17,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
         t.datetime    :remember_created_at
 
       ## customazing attribute
-      t.integer     :age
       t.string      :gender
       t.string      :name
       t.references  :mentor
+      t.integer     :readVol, default: 0
+      t.integer     :menteeNum, default: 0
+      t.string      :favGenre, default: "-"
+      t.integer     :favGenreVol, default: 0
 
 
       ## Trackable

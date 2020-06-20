@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/reads/create/:book_id' => 'reads#create'
   get '/reads/clear/:book_id' => 'reads#clear'
   get '/reads/show_complete_books' => 'reads#show_complete_books'
-  get '/users/index' => 'users#index'
+  get '/users/index/:ord' => 'users#index'
   get '/users/create/:user_id' => 'users#create'
   get '/users/delete' => 'users#delete'
   get '/users/show' => 'users#show'

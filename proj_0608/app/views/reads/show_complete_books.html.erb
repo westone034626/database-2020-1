@@ -3,10 +3,8 @@
         <span class="badge badge-secondary">
             <%= "#{@books.count}권" %>
         </span>
-    </h2>
-    <% unless @favorite_genre.nil? %>
-        <h3>최애 장르: <%= @favorite_genre[0] %>(<%= @favorite_genre[1] %>권)</h3>
-    <% end %>
+    </h2>    
+    <h3>좋아하는 장르: <%= current_user.favGenre %>(<%= current_user.favGenreVol %>권)</h3>
     <table class="table">
         <th>도서명</th>
         <th>저자</th>

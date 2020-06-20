@@ -1,10 +1,25 @@
 <div class="w-75 p-3" style="background-color: #eee;">
-    <h2>유저 리스트 <span class="badge badge-secondary"></h2>
+        <h2>
+            <div class ="dropdown">
+                유저 리스트 <span class="badge badge-secondary">
+                <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    정렬기준
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/users/index/<%= 'menteeNum' %>">멘티</a>
+                    <a class="dropdown-item" href="/users/index/<%= 'readVol' %>">독서량</a>
+                    <a class="dropdown-item" href="/users/index/<%= 'favGenre' %>">장르</a>
+                </div>
+            </div>
+        </div>
+        </h2>    
     <table class="table">
         <th>이메일</th>
         <th>이름</th>
         <th>가입일</th>
         <th>독서량</th>
+        <th>좋아하는 장르</th>
         <th>멘티 수</th>
         <th>멘토신청</th>
         <% @users.each do |user| %>
@@ -12,8 +27,9 @@
                 <td><%= user.email %></td>
                 <td><%= user.name %></td>
                 <td><%= user.created_at.to_date %></td>
-                <td><%= user.reads.where(status:true).count %></td>
-                <td><%= user.mentees.count %></td>
+                <td><%= user.readVol %></td>
+                <td><%= user.favGenre %>(<%= user.favGenreVol %>권)</td>
+                <td><%= user.menteeNum %></td>
                 <td>
                     <a href="/users/create/<%= user.id%>">
                         <svg class="bi bi-person-plus-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -11,14 +11,8 @@
             <td><%= @m_u.email %></td>
             <td><%= @m_u.name %></td>
             <td><%= @m_u.created_at.to_date %></td>
-            <td><a href="/users/show_mentor_books/<%= @m_u.id %>"><%= @m_u.reads.where(status: true).count %></a></td>
-            <td><a href="/users/show_mentor_mentees/<%= @m_u.id %>"><%= @m_u.mentees.count %></a></td>
-            <td>
-            <% unless @favorite_genre.nil? %>
-                <%= @favorite_genre[0] %>(<%= @favorite_genre[1] %>권)
-            <% else %>
-                <%= '-' %>
-            <% end %>
-            </td>
+            <td><a href="/users/show_mentor_books/<%= @m_u.id %>"><%= @m_u.readVol %></a></td>
+            <td><a href="/users/show_mentor_mentees/<%= @m_u.id %>"><%= @m_u.menteeNum %></a></td>
+            <td><%= @m_u.favGenre %>(<%= @m_u.favGenreVol %>권)</td>
     </table>
 </div>

@@ -24,6 +24,26 @@ class ReadsController < ApplicationController
         read.status = true
         read.finish = Time.now
         read.save
+
+        reads = User.find(current_user.id).reads.where(status: true)        
+        arr = Array.new()
+        reads.each do |read|
+            arr.push(read.book_id)
+        end
+        books = Book.where(id: arr)
+
+        hashes = books.group(:genre).count
+
+        favorite_genre = hashes.max_by{|k,v| v}
+        user = User.find(current_user.id)
+        user.readVol += 1
+
+        unless favorite_genre.nil?
+            user.favGenre = favorite_genre[0].strip
+            user.favGenreVol = favorite_genre[1]
+        end
+        user.save
+
         redirect_to '/'
     end
 
@@ -34,13 +54,6 @@ class ReadsController < ApplicationController
             arr.push(read.book_id)
         end
         @books = Book.where(id: arr)
-
-        hashes = @books.group(:genre).count
-
-        def largest_hash_key(hash)
-            hash.max_by{|k,v| v}
-        end
-        @favorite_genre = largest_hash_key(hashes)
 
 =begin
         sql = ("
