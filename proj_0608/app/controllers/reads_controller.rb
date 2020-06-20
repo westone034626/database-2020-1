@@ -44,6 +44,10 @@ class ReadsController < ApplicationController
         end
         user.save
 
+        book = Book.find(params[:book_id])
+        book.reader += 1
+        book.save
+
         redirect_to '/'
     end
 

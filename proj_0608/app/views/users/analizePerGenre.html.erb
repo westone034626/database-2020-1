@@ -1,0 +1,15 @@
+<div class="w-75 p-3" style="background-color: #eee;">
+    <div class ="dropdown123">
+        <h2>장르별 독서량:</h2>
+    </div>
+    <table class="table">
+        <th>장르명</th>
+        <th>읽은 권수</th>
+        <% @genres.each do |key, value| %>
+            <tr>
+                <td><%= key %></td>
+                <td><%= value %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>

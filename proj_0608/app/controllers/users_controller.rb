@@ -60,4 +60,35 @@ class UsersController < ApplicationController
     def show_mentees
         @users = current_user.mentees
     end
+
+    def analizePerGenre
+        reads = User.find(current_user.id).reads.where(status: true)
+        arr = Array.new()
+        reads.each do |read|
+            arr.push(read.book_id)
+        end
+        books = Book.where(id:arr)
+        @genres = books.group(:genre).count
+    end
+
+    def analizePerGenreUsers
+
+        sql = "
+        SELECT sum(reader) as sr, genre
+        FROM books
+        GROUP BY genre
+        "
+        
+        @books = Book.find_by_sql(sql)
+
+    end
+
+    def analizePerBookUsers
+        sql = "
+        SELECT title, reader
+        FROM books
+        "
+
+        @books = Book.find_by_sql(sql)
+    end
 end

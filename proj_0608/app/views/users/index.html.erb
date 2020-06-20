@@ -1,18 +1,28 @@
 <div class="w-75 p-3" style="background-color: #eee;">
         <h2>
-            <div class ="dropdown">
-                유저 리스트 <span class="badge badge-secondary">
+            <div class ="dropdown123">
+                <h2>유저 리스트</h2>
                 <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    정렬기준
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/users/index/<%= 'menteeNum' %>">멘티</a>
-                    <a class="dropdown-item" href="/users/index/<%= 'readVol' %>">독서량</a>
-                    <a class="dropdown-item" href="/users/index/<%= 'favGenre' %>">장르</a>
+                    <a href="/users/analizePerBookUsers">
+                        <button type="button" class="btn btn-secondary">
+                            도서별 독자수
+                        </button>
+                    </a>
+                    <a href = "/users/analizePerGenreUsers">
+                        <button type="button" class="btn btn-secondary">
+                            장르별 읽힌 권수
+                        </button>
+                    </a>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        정렬기준
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/users/index/<%= 'menteeNum' %>">멘티</a>
+                        <a class="dropdown-item" href="/users/index/<%= 'readVol' %>">독서량</a>
+                        <a class="dropdown-item" href="/users/index/<%= 'favGenre' %>">장르</a>
+                    </div>
                 </div>
             </div>
-        </div>
         </h2>    
     <table class="table">
         <th>이메일</th>

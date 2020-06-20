@@ -1,25 +1,29 @@
 <div class="w-75 p-3" style="background-color: #eee;">
-    <h2>읽은 책: 
-        <span class="badge badge-secondary">
-            <%= "#{@books.count}권" %>
-        </span>
-    </h2>    
-    <h3>좋아하는 장르: <%= current_user.favGenre %>(<%= current_user.favGenreVol %>권)</h3>
+    <div class ="dropdown123">
+        <h2>다 읽은 책:</h2>
+        <div>
+            <a href="/users/analizePerGenre">
+                <button type="button" class="btn btn-secondary">장르별 독서량</button>
+            </a>
+        </div>
+    </div>    
     <table class="table">
         <th>도서명</th>
         <th>저자</th>
         <th>페이지 수</th>
         <th>장르</th>
         <th>걸린 일수</th>
-        <% @books.each do |book| %>
-            <tr>
-                <td><%= book.title %></td>
-                <td><%= book.author %></td>
-                <td><%= book.page %></td>
-                <td><%= book.genre %></td>
-                <% tmp_read = Read.find_by(book_id: book.id, user_id: current_user.id) %>
-                <td><%= (tmp_read.finish.to_date - tmp_read.start.to_date).to_i %></td>
-            </tr>
+        <% unless @books.nil? %>
+            <% @books.each do |book| %>
+                <tr>
+                    <td><%= book.title %></td>
+                    <td><%= book.author %></td>
+                    <td><%= book.page %></td>
+                    <td><%= book.genre %></td>
+                    <% tmp_read = Read.find_by(book_id: book.id, user_id: current_user.id) %>
+                    <td><%= (tmp_read.finish.to_date - tmp_read.start.to_date).to_i %></td>
+                </tr>
+            <% end %>
         <% end %>
     </table>
 </div>

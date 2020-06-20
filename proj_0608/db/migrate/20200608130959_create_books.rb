@@ -8,6 +8,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.string      :author
       t.string      :imageURL
       t.string      :publisher
+      t.integer     :reader, default: 0
       t.timestamps
     end
   end

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/users/show_mentor_books/:user_id' => 'users#show_mentor_books'
   get '/users/show_mentor_mentees/:user_id' => 'users#show_mentor_mentees'
   get '/users/show_mentees' => 'users#show_mentees'
+  get '/users/analizePerGenre' => 'users#analizePerGenre'
+  get '/users/analizePerGenreUsers' => 'users#analizePerGenreUsers'
+  get '/users/analizePerBookUsers' => 'users#analizePerBookUsers'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -19,7 +19,7 @@ class BooksController < ApplicationController
 	            page = page.delete "쪽"
 	            book.page = Integer(page)
 	            genre = doc.css('.list_detail_category li[1] a[1]')
-	            book.genre = genre[0].text
+	            book.genre = genre[0].text.strip
 	            book.title = doc.css('.box_detail_point h1.title').text
 	            book.author = doc.css('.box_detail_point .author .name .detail_author').text
 	            image = doc.css('.box_detail_info .box_detail_cover .cover').at("img[src]")

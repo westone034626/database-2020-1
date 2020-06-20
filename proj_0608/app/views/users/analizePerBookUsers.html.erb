@@ -1,0 +1,15 @@
+<div class="w-75 p-3" style="background-color: #eee;">
+    <div class ="dropdown123">
+        <h2>도서별 독자수:</h2>
+    </div>
+    <table class="table">
+        <th>도서명</th>
+        <th>독자 수</th>
+        <% @books.each do |b| %>
+            <tr>
+                <td><%= b.title %></td>
+                <td><%= b.reader %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>

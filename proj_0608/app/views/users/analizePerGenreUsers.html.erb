@@ -1,0 +1,15 @@
+<div class="w-75 p-3" style="background-color: #eee;">
+    <div class ="dropdown123">
+        <h2>장르별 읽힌 권수:</h2>
+    </div>    
+    <table class="table">
+        <th>장르명</th>
+        <th>읽힌 권수</th>
+        <% @books.each do |b| %>
+            <tr>
+                <td><%= b.genre %></td>
+                <td><%= b.sr %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>
