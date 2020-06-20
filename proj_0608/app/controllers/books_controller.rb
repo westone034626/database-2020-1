@@ -6,7 +6,7 @@ class BooksController < ApplicationController
 
     def search
         if params[:ISBN].length == 13
-            unless book = Book.find_by(ISBN: params[:ISBN])
+            unless book = Book.find_by(ISBN: params[:ISBN]) #SELECT * FROM books WHERE ISBN = params[:ISBN]
                 url = "http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=" + params[:ISBN]
                 require 'open-uri'
                 
@@ -36,7 +36,9 @@ class BooksController < ApplicationController
 
     def create
         book = Book.find_by(ISBN:params[:ISBN])
-        if Read.find_by(book_id:book.id, user_id:current_user.id)
+        #SELECT * FROM books WHERE ISBN = params[:ISBN]
+
+        if Read.find_by(book_id:book.id, user_id:current_user.id) #SELECT * FROM reads WHERE book_id = book.id AND user_id = current_user.id
             redirect_to '/'
         else
             read = Read.new
@@ -45,6 +47,7 @@ class BooksController < ApplicationController
             read.status = false
             read.save
             redirect_to '/'
+            #INSERT INTO reads("user_id", "book_id", "status") VALUES (current_user.id, book_id, false)
         end
         
     end
