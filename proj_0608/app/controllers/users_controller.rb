@@ -110,6 +110,7 @@ class UsersController < ApplicationController
         AND r.status = true
         AND u.id = '#{current_user.id}'
         GROUP BY b.genre
+        ORDER BY count(b.id) DESC, b.genre ASC
         "
         
         @genres = Read.find_by_sql(sql)
@@ -122,6 +123,7 @@ class UsersController < ApplicationController
         SELECT sum(reader) as sr, genre
         FROM books
         GROUP BY genre
+        ORDER BY sum(reader) DESC, genre ASC
         "
         
         @books = Book.find_by_sql(sql)
@@ -132,6 +134,7 @@ class UsersController < ApplicationController
         sql = "
         SELECT title, reader
         FROM books
+        ORDER BY reader DESC, title ASC
         "
 
         @books = Book.find_by_sql(sql)
