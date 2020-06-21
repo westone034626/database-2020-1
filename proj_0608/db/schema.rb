@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2020_06_08_131009) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "gender"
     t.string "name"
     t.integer "mentor_id"
     t.integer "readVol", default: 0

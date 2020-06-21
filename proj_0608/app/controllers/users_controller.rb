@@ -60,65 +60,60 @@ class UsersController < ApplicationController
         redirect_to '/users/index/0'
     end
 
-    def show
-        c_u = User.find(current_user.id)
-        @m_u = c_u.mentor
-        
-        #SELECT * FROM users WHERE id = current_user.id
+    def show        
+        sql = "
+        SELECT id, email, name, created_at, readVol, menteeNum, favGenre, favGenreVol 
+        FROM users
+        WHERE id = (SELECT mentor_id
+                    FROM users
+                    WHERE id = '#{current_user.id}')"
+        m_u = User.find_by_sql(sql)
+        @m_u = m_u[0]
     end
 
     def show_mentor_books
-        reads = User.find(params[:user_id]).reads.where(status: true)
-        arr = Array.new()
-        reads.each do |read|
-            arr.push(read.book_id)
-        end
-        @books = Book.where(id:arr)
         sql = "
-        SELECT *
-        FROM books
-        WHERE id = (SELECT r.book_id
-                    FROM users u, reads r
-                    WHERE u.id = r.user_id
-                    AND r.status = true
-                    AND u.id = current_user.id)"
-
-        @m_u_id = params[:user_id]
-        #SELECT * FROM users WHERE id = params[:user_id]
+        SELECT b.title as title, b.author as author, b.page as page, b.genre as genre, (r.finish - r.start) as ct
+        FROM users u, books b, reads r
+        WHERE u.id = r.user_id
+        AND r.book_id = b.id
+        AND r.status = true
+        AND u.id = '#{params[:user_id]}'"
+        @books = Book.find_by_sql(sql)
     end
 
     def show_mentor_mentees
         @mentor = User.find(params[:user_id])
         #SELECT * FROM users Where id = params[:user_id]
 
-        @users = @mentor.mentees
-        #SELECT * FROM users Where mentor_id = current_user.id
+        sql = "
+        SELECT *
+        FROM users
+        WHERE mentor_id = '#{params[:user_id]}'"
+        @users = User.find_by_sql(sql)
     end
 
     def show_mentees
-        @users = current_user.mentees
-        #SELECT * FROM users Where mentor_id = current_user.id
+        sql = "
+        SELECT *
+        FROM users
+        WHERE mentor_id = '#{current_user.id}'"
+        @users = User.find_by_sql(sql)
     end
 
     def analizePerGenre
-        reads = User.find(current_user.id).reads.where(status: true)
-        arr = Array.new()
-        reads.each do |read|
-            arr.push(read.book_id)
-        end
-        books = Book.where(id:arr)
-        @genres = books.group(:genre).count
-
         sql = "
-        SELECT genre, count(id)
-        FROM (SELECT *
-                FROM books
-                WHERE id = (SELECT r.book_id
-                            FROM users u, reads r
-                            WHERE u.id = r.user_id
-                            AND r.status = true
-                            AND u.id = current_user.id)) AS s_books
-        GROUP BY genre"
+        SELECT b.genre as bg, count(b.id) as sr, AVG(r.finish - r.start) as af, SUM(b.page) as sp
+        FROM users u, reads r, books b
+        WHERE u.id = r.user_id
+        AND r.book_id = b.id
+        AND r.status = true
+        AND u.id = '#{current_user.id}'
+        GROUP BY b.genre
+        "
+        
+        @genres = Read.find_by_sql(sql)
+        
     end
 
     def analizePerGenreUsers

@@ -1,14 +1,18 @@
 <div class="w-75 p-3" style="background-color: #eee;">
     <div class ="dropdown123">
-        <h2>장르별 독서량:</h2>
+        <h2>장르별 독서추이:</h2>
     </div>
     <table class="table">
         <th>장르명</th>
         <th>읽은 권수</th>
-        <% @genres.each do |key, value| %>
+        <th>평균 소요일수</th>
+        <th>총 페이지 수</th>
+        <%  @genres.each do |ur| %>
             <tr>
-                <td><%= key %></td>
-                <td><%= value %></td>
+                <td><%= ur.bg %></td>
+                <td><%= ur.sr %></td>
+                <td><%= ur.af.floor %></td>
+                <td><%= ur.sp %></td>
             </tr>
         <% end %>
     </table>

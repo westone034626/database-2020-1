@@ -17,7 +17,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
         t.datetime    :remember_created_at
 
       ## customazing attribute
-      t.string      :gender
       t.string      :name
       t.references  :mentor
       t.integer     :readVol, default: 0

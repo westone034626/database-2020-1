@@ -11,8 +11,8 @@
                 <td><%= u.email %></td>
                 <td><%= u.name %></td>
                 <td><%= u.created_at.to_date %></td>
-                <td><%= u.reads.where(status: true).count %></td>
-                <td><%= u.mentees.count %></td>
+                <td><%= u.readVol %></td>
+                <td><%= u.menteeNum %></td>
             </tr>
         <% end %>
     </table>

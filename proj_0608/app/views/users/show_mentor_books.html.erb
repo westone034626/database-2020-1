@@ -16,8 +16,7 @@
                     <td><%= book.author %></td>
                     <td><%= book.page %></td>
                     <td><%= book.genre %></td>
-                    <% tmp_read = Read.find_by(book_id: book.id, user_id: @m_u_id) %>
-                    <td><%= (tmp_read.finish.to_date - tmp_read.start.to_date).to_i %></td>
+                    <td><%= book.ct %></td>
                 </tr>
             <% end %>
         </table>

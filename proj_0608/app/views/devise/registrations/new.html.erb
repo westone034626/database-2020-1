@@ -27,18 +27,6 @@
         <%= f.label :name %><br />
         <%= f.text_field :name, autofocus: true %>
       </div>
-      <br>
-      <div class="field">
-        성별: <label class="radio_button">남자
-          <%= f.radio_button :gender, '남자', checked: false %>
-        </label>
-        <label class="radio_button">여자
-          <%= f.radio_button :gender, '여자', checked: false %>
-        </label>
-      </div>
-      
-      <br>
-
       <div class="actions">
         <%= f.submit "Sign up" %>
       </div>

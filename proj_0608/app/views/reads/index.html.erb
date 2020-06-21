@@ -15,12 +15,11 @@
                 <td><%= book.page %></td>
                 <td><%= book.genre %></td>
                 <td><a href="/reads/delete/<%= book.id%>">X</a></td>
-                <% tmp_read = book.reads.find_by(book_id: book.id, user_id: current_user.id) %>
-                <% if tmp_read.start == nil %>
+                <% if book.start == nil %>
                     <td><a href="/reads/create/<%= book.id%>">O</a></td>
                     <td>-</td>
                 <% else %>
-                    <td><%= tmp_read.start %></td>
+                    <td><%= book.start %></td>
                     <td><a href="/reads/clear/<%= book.id%>">clear</a></td>
                 <% end %>
             </tr>
