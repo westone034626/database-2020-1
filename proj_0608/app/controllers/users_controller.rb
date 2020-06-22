@@ -112,31 +112,30 @@ class UsersController < ApplicationController
         GROUP BY b.genre
         ORDER BY count(b.id) DESC, b.genre ASC
         "
-        
         @genres = Read.find_by_sql(sql)
-        
     end
 
     def analizePerGenreUsers
 
         sql = "
-        SELECT sum(reader) as sr, genre
-        FROM books
+        SELECT sum(b.reader) as sr, b.genre as genre
+        FROM books b, reads r
+        WHERE b.id = r.book_id
+        AND r.status = true
         GROUP BY genre
-        ORDER BY sum(reader) DESC, genre ASC
+        ORDER BY sum(b.reader) DESC, b.genre ASC
         "
-        
         @books = Book.find_by_sql(sql)
-
     end
 
     def analizePerBookUsers
         sql = "
-        SELECT title, reader
-        FROM books
+        SELECT b.title as title, b.reader as reader
+        FROM books b, reads r
+        WHERE b.id = r.book_id
+        AND r.status = true
         ORDER BY reader DESC, title ASC
         "
-
         @books = Book.find_by_sql(sql)
     end
 end

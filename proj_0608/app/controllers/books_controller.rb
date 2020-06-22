@@ -38,7 +38,8 @@ class BooksController < ApplicationController
         book = Book.find_by(ISBN:params[:ISBN])
         #SELECT * FROM books WHERE ISBN = params[:ISBN]
 
-        if Read.find_by(book_id:book.id, user_id:current_user.id) #SELECT * FROM reads WHERE book_id = book.id AND user_id = current_user.id
+        if Read.find_by(book_id:book.id, user_id:current_user.id) 
+            #SELECT * FROM reads WHERE book_id = book.id AND user_id = current_user.id
             redirect_to '/'
         else
             read = Read.new
