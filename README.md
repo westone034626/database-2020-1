@@ -16,12 +16,12 @@
 
 
 ## 3.	독서 습관 관리 프로그램 개념도
-![1](https://drive.google.com/uc?export=view&id=1iXo9jFqwBQBhAbP_dAkoxcselFU3KBu_)
+![1](https://user-images.githubusercontent.com/26649774/99924077-297a2f00-2d7c-11eb-8bda-37a4229c4689.png)
 
 ## 4. 정보관리 모듈 개념도
-![2](https://drive.google.com/uc?export=view&id=15fn-yTOAKlLOjC5uuWfAWxMZJv2Myiak)
+![2](https://user-images.githubusercontent.com/26649774/99924094-372fb480-2d7c-11eb-9de6-e26cd093b70b.png)
 ## 5. ERD(Entity Relationship Diagram)
-![3](https://drive.google.com/uc?export=view&id=15rU_tLjPB9rP8LGLJlQjqKkoQSbo8RIo)
+![3](https://user-images.githubusercontent.com/26649774/99924098-3860e180-2d7c-11eb-99ae-a65ee64bec66.png)
 
 ## 6. 관계 모델의 릴레이션
 ```
@@ -144,7 +144,7 @@ CREATE TABLE READ
 ### 로그인 화면 (이메일 & 비밀번호 입력)
 
 #### 특징: 입력받은 정보와 데이터베이스의 user table 정보를 비교합니다.
-![4](https://drive.google.com/uc?export=view&id=1nqjJ_at8jIVDDQqgy89Y3sENzuIaxWsl)
+![4](https://user-images.githubusercontent.com/26649774/99924099-38f97800-2d7c-11eb-89f0-fa8e7e7abb1e.png)
 
 ---
 
@@ -154,13 +154,13 @@ CREATE TABLE READ
 ```
 INSERT INTO user(“email”, “password”, “name”) VALUES (입력이메일, 입력패스워드, 입력이름);
 ```
-![5](https://drive.google.com/uc?export=view&id=1A39M_itJSGo8YUMxF-JKKFftz7OIJuEx)
+![5](https://user-images.githubusercontent.com/26649774/99924100-39920e80-2d7c-11eb-962c-72e9122ab32b.png)
 
 ---
 
 ### 메인 화면 (로그인한 유저 정보 & 읽고 있는 책 리스트 확인 가능)
 
-![6](https://drive.google.com/uc?export=view&id=1Uy6kGS5Ds0hFm8jvfdLVKtpZTpzlaqNg)
+![6](https://user-images.githubusercontent.com/26649774/99924102-39920e80-2d7c-11eb-8049-382e6fb1b63b.png)
 
 ```
 //사용자가 현재 읽고 있는 책: 현재 사용자가 독서 중인 책들을 불러옵니다.
@@ -212,7 +212,7 @@ UPDATE book SET reader = reader + 1 WHERE id = params[:book_id]
 SELECT * FROM book WHERE ISBN = params[:ISBN]
 ```
 
-![7](https://drive.google.com/uc?export=view&id=1ra4xq_aytFm371-LaKM4tqPKe-AZ_G9y)
+![7](https://user-images.githubusercontent.com/26649774/99924104-3a2aa500-2d7c-11eb-9880-c025a669048f.png)
 
 #### step 2: step 1에서 불러온 책 정보를 가져옵니다. ‘추가’버튼을 누르면 현재 사용자가 이 책을 읽고 있는 것에 대한 정보를 Read 테이블에 추가합니다.
 
@@ -222,7 +222,7 @@ INSERT INTO book
 VALUES(book.ISBN, book.page, book.genre, book.title, book.author, book.imageURL, book.publisher)
 ```
 
-![8](https://drive.google.com/uc?export=view&id=1v0cCNHsaKFehIbkeNTOuOmcwkcR6vVj5)
+![8](https://user-images.githubusercontent.com/26649774/99924105-3ac33b80-2d7c-11eb-9af0-6da0c57bff5b.png)
 
 ---
 
@@ -239,7 +239,7 @@ AND b.id = r.book_id
 AND r.status = true"
 ```
 
-![9](https://drive.google.com/uc?export=view&id=10mG5b7HDTEIR_tTjzymn8pwE5_EBL7bD)
+![9](https://user-images.githubusercontent.com/26649774/99924107-3b5bd200-2d7c-11eb-9144-9c817717374a.png)
 
 ---
 
@@ -258,7 +258,7 @@ GROUP BY b.genre
 ORDER BY count(b.id) DESC, b.genre ASC
 ```
 
-![10](https://drive.google.com/uc?export=view&id=1m4yjwAITnjM72E8i9NQC0EKrFt4DYCdf)
+![10](https://user-images.githubusercontent.com/26649774/99924108-3bf46880-2d7c-11eb-989a-8fca7d216c8d.png)
 
 ---
 
@@ -266,7 +266,7 @@ ORDER BY count(b.id) DESC, b.genre ASC
 
 #### 특징: 유저들을 멘티, 총 독서량, 장르별 독서량 기준으로 정렬한다.
 
-![12](https://drive.google.com/uc?export=view&id=1zCCCQsuTrAw-U41XGJ9gyE0nYHlqL6__)
+![12](https://user-images.githubusercontent.com/26649774/99924112-3c8cff00-2d7c-11eb-83a5-340ddc07bc05.png)
 
 ---
 
@@ -316,7 +316,7 @@ UPDATE user SET menteeNum = menteeNum - 1
 WHERE id = c_u.mentor.id
 ```
 
-![11](https://drive.google.com/uc?export=view&id=1i8CeIOL_zIpngclurrsthF9LmHQGXERW)
+![11](https://user-images.githubusercontent.com/26649774/99924110-3bf46880-2d7c-11eb-80b0-088e6e10d1b1.png)
 
 ---
 
@@ -333,7 +333,7 @@ GROUP BY genre
 ORDER BY sum(b.reader) DESC, b.genre ASC
 ```
 
-![14](https://drive.google.com/uc?export=view&id=10UXjy8_EfGZOuhE5PHeVlffz6tN2RR6o)
+![14](https://user-images.githubusercontent.com/26649774/99924116-3d259580-2d7c-11eb-8828-7023bbb51f43.png)
 
 ---
 
@@ -349,7 +349,7 @@ AND r.status = true
 ORDER BY reader DESC, title ASC
 ```
 
-![15](https://drive.google.com/uc?export=view&id=1ZHbgiuN_pn7Do6y15hgQ3bpDfUvEaNIb)
+![15](https://user-images.githubusercontent.com/26649774/99924127-4ca4de80-2d7c-11eb-9346-2c01ebc4d496.png)
 
 ---
 
@@ -363,7 +363,7 @@ FROM user
 WHERE mentor_id = '#{current_user.id}'
 ```
 
-![16](https://drive.google.com/uc?export=view&id=10re0AhAEyzK1TLnuaMmvJ7POpdbeklHK)
+![16](https://user-images.githubusercontent.com/26649774/99924129-4e6ea200-2d7c-11eb-9f20-2a26ba8512a3.png)
 
 ---
 
@@ -379,7 +379,7 @@ WHERE id = (SELECT mentor_id
             WHERE id = '#{current_user.id}')
 ```
 
-![17](https://drive.google.com/uc?export=view&id=1k_P1pEKXQGHEpzY1yTj1R1lozq6TJWsO)
+![17](https://user-images.githubusercontent.com/26649774/99924130-4f9fcf00-2d7c-11eb-9370-fdf10e9fb2ba.png)
 
 ---
 
@@ -396,7 +396,7 @@ AND r.status = true
 AND u.id = '#{params[:user_id]}'
 ```
 
-![18](https://drive.google.com/uc?export=view&id=1yejNcVW7t6STVJXVYOl16ooXlkcbak2z)
+![18](https://user-images.githubusercontent.com/26649774/99924133-50386580-2d7c-11eb-98fd-44c6a95a093d.png)
 
 ---
 
@@ -410,7 +410,7 @@ FROM user
 WHERE mentor_id = '#{params[:user_id]}'
 ```
 
-![19](https://drive.google.com/uc?export=view&id=1bPnDA8dt_akTnVfvx0HqiEg-dtPMJdLE)
+![19](https://user-images.githubusercontent.com/26649774/99924135-50d0fc00-2d7c-11eb-9385-2817372dad22.png)
 
 ---
 
